@@ -1,11 +1,11 @@
-// Copyright (c) 2023 thorstenrie
+// Copyright (c) 2023-2026 thorsphere
 // All rights reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package lpstats
 
 // Import package tserr
 import (
-	"github.com/thorstenrie/tserr" // tserr
+	"github.com/thorsphere/tserr" // tserr
 )
 
 // Variance returns the variance of discrete value array x as float64. It returns zero and an error

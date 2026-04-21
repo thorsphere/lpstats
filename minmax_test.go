@@ -1,12 +1,13 @@
-// Copyright (c) 2023 thorstenrie
+// Copyright (c) 2023-2026 thorsphere
 // All rights reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package lpstats_test
 
+// Import standard library packages and the lpstats package for testing the Min and Max functions.
 import (
-	"testing"
+	"testing" // Import the testing package for writing test cases.
 
-	"github.com/thorstenrie/lpstats"
+	"github.com/thorsphere/lpstats" // Import the lpstats package to access the Min and Max functions.
 )
 
 // TestMaxf1 tests the result of Max for two float64 arguments. If the result of Max does not

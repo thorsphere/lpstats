@@ -1,10 +1,10 @@
-// Copyright (c) 2023 thorstenrie
+// Copyright (c) 2023-2026 thorsphere
 // All rights reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package lpstats
 
 // Import package tserr
-import "github.com/thorstenrie/tserr" // tserr
+import "github.com/thorsphere/tserr" // tserr
 
 // Sum returns the sum of all elements in array x as float64.
 func Sum[T Number](x []T) (float64, error) {

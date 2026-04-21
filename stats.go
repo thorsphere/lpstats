@@ -14,7 +14,7 @@
 //
 // Most functions take integer and float values as arguments.
 //
-// Copyright (c) 2023 thorstenrie
+// Copyright (c) 2023-2026 thorsphere
 // All rights reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package lpstats

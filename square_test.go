@@ -1,4 +1,4 @@
-// Copyright (c) 2023 thorstenrie
+// Copyright (c) 2023-2026 thorsphere
 // All rights reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package lpstats_test
@@ -7,7 +7,7 @@ package lpstats_test
 import (
 	"testing" // testing
 
-	"github.com/thorstenrie/lpstats"
+	"github.com/thorsphere/lpstats" // lpstats
 )
 
 // TestSquarefp tests the result of Square for a positive float64. If the result of Square does not

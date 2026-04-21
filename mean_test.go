@@ -1,4 +1,4 @@
-// Copyright (c) 2023 thorstenrie
+// Copyright (c) 2023-2026 thorsphere
 // All rights reserved. Use is governed with GNU Affero General Public License v3.0
 // that can be found in the LICENSE file.
 package lpstats_test
@@ -7,8 +7,8 @@ package lpstats_test
 import (
 	"testing" // testing
 
-	"github.com/thorstenrie/lpstats"
-	"github.com/thorstenrie/tserr"
+	"github.com/thorsphere/lpstats" // lpstats
+	"github.com/thorsphere/tserr"   // tserr
 )
 
 // TestExpectedValueUi tests the returned value of ExpectedValueU for integers as arguments.
