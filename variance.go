@@ -25,7 +25,7 @@ func Variance[T Number](x []T) (float64, error) {
 		return float64(0), tserr.Op(&tserr.OpArgs{Op: "ArithmeticMean", Fn: "x", Err: err})
 	}
 	// Calculate and return the arithmetic mean
-	for i := 0; i < len(x); i++ {
+	for i := range x {
 		vari += Square(float64(x[i]) - mean)
 	}
 	return vari / float64(len(x)), nil

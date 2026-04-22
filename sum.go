@@ -13,7 +13,7 @@ func Sum[T Number](x []T) (float64, error) {
 		return float64(0), tserr.Empty("x")
 	}
 	var sum float64
-	for i := 0; i < len(x); i++ {
+	for i := range x {
 		sum += float64(x[i])
 	}
 	return sum, nil
