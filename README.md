@@ -1,105 +1,136 @@
 # lpstats
-Go package for simple statistics
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/thorstenrie/lpstats)](https://goreportcard.com/report/github.com/thorstenrie/lpstats)
-[![CodeFactor](https://www.codefactor.io/repository/github/thorstenrie/lpstats/badge)](https://www.codefactor.io/repository/github/thorstenrie/lpstats)
-![OSS Lifecycle](https://img.shields.io/osslifecycle/thorstenrie/lpstats)
+A lightweight Go package for simple mathematical and statistical calculations. Provides generic functions for computing mean, variance, and other common statistical operations with support for both integer and floating-point types.
 
-[![PkgGoDev](https://pkg.go.dev/badge/mod/github.com/thorstenrie/lpstats)](https://pkg.go.dev/mod/github.com/thorstenrie/lpstats)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/thorstenrie/lpstats)
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/thorstenrie/lpstats)
+[![Go Report Card](https://goreportcard.com/badge/github.com/thorsphere/lpstats)](https://goreportcard.com/report/github.com/thorsphere/lpstats)
+[![CodeFactor](https://www.codefactor.io/repository/github/thorsphere/lpstats/badge)](https://www.codefactor.io/repository/github/thorsphere/lpstats)
+![OSS Lifecycle](https://img.shields.io/osslifecycle/thorsphere/lpstats)
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/thorstenrie/lpstats)
-![GitHub last commit](https://img.shields.io/github/last-commit/thorstenrie/lpstats)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/thorstenrie/lpstats)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/thorstenrie/lpstats)
-![GitHub Top Language](https://img.shields.io/github/languages/top/thorstenrie/lpstats)
-![GitHub](https://img.shields.io/github/license/thorstenrie/lpstats)
+[![PkgGoDev](https://pkg.go.dev/badge/mod/github.com/thorsphere/lpstats)](https://pkg.go.dev/mod/github.com/thorsphere/lpstats)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/thorsphere/lpstats)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/thorsphere/lpstats)
 
-The package lpstats provides a simple interface for statistics. It provides functions for the calculation of mean and variance.
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/thorsphere/lpstats)
+![GitHub last commit](https://img.shields.io/github/last-commit/thorsphere/lpstats)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/thorsphere/lpstats)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/thorsphere/lpstats)
+![GitHub Top Language](https://img.shields.io/github/languages/top/thorsphere/lpstats)
+![GitHub](https://img.shields.io/github/license/thorsphere/lpstats)
 
-- **Simple**: Without configuration, just function calls
-- **Easy to use**: Most functions take integer and float values as arguments
-- **Tested**: Unit tests with high code coverage
-- **Dependencies**: Only depends on the [Go Standard Library](https://pkg.go.dev/std) and [tserr](https://github.com/thorstenrie/tserr)
+## Features
 
-## Usage
+- **Simple API**: No configuration required, just function calls
+- **Type Flexible**: Support for integer and floating-point types via Go generics
+- **Tested**: Comprehensive unit test coverage
+- **Minimal Dependencies**: Only depends on the [Go Standard Library](https://pkg.go.dev/std) and [tserr](https://github.com/thorsphere/tserr) for error handling
 
-The package is installed with 
+## Installation
 
-```
-go get github.com/thorstenrie/lpstats
-```
+Install the package using `go get`:
 
-In the Go app, the package is imported with
-
-```
-import "github.com/thorstenrie/lpstats"
+```bash
+go get github.com/thorsphere/lpstats
 ```
 
-External functions can be used with arguments of type integer or float. Type constraints are defined in [constraints.go](https://github.com/thorstenrie/lpstats/blob/main/constraints.go).
+Import in your Go code:
 
-- `Number`: number types, for example, `func Square[T Number](x T) float64`
-- `Signed`: signed number types, for example, `func Sign[T Signed](a T) T`
-- `Sinteger`: signed integer types, for example `func EqualS[T Sinteger](x, y T) error`
-- `Uinteger`: unsigned integer types, for example, `func VarianceN[T Uinteger](n T) float64`
-
-## Functions
-
-The package provides mathematical and statistical functions
-
-- Absolute value
-- Arithmetic mean of a discrete value array
-- Equal for slices of signed integers
-- Expected value for a uniform distribution
-- Max (Depcrecated and will be removed in one of the next releases)
-- Min (Depcrecated and will be removed in one of the next releases)
-- Near equal
-- Sign
-- Square
-- Sum
-- Variance of a discrete value array
-- Variance of a uniform distribution
-
-## Example
-
+```go
+import "github.com/thorsphere/lpstats"
 ```
+
+## Requirements
+
+- Go 1.26 or higher (uses generic types)
+
+## Type Constraints
+
+Most functions use Go generics with type constraints defined in [constraints.go](constraints.go). The main constraints are:
+
+- **`Number`**: All number types (int, uint, float, etc.)  
+  Example: `func Square[T Number](x T) float64`
+
+- **`Signed`**: Signed number types (int, float)  
+  Example: `func Sign[T Signed](a T) T`
+
+- **`Sinteger`**: Signed integer types (int, int8, int16, etc.)  
+  Example: `func EqualS[T Sinteger](x, y T) error`
+
+- **`Uinteger`**: Unsigned integer types (uint, uint8, uint16, etc.)  
+  Example: `func VarianceN[T Uinteger](n T) float64`
+
+## API Reference
+
+### Supported Functions
+
+- **Absolute value**: `Abs()` - returns the absolute value of a number
+- **Arithmetic mean**: `ArithmeticMean()` - calculates the mean of a discrete value array
+- **Equal for slices**: `EqualS()` - equality check for slices of signed integers
+- **Near equal**: `NearEqual()` - approximate equality for float types
+- **Sign**: `Sign()` - returns the sign of a number
+- **Square**: `Square()` - returns the square of a number
+- **Sum**: `Sum()` - calculates the sum of values
+- **Mean**: `Mean()` - calculates the mean of a discrete value array
+- **Variance**: `Variance()` - calculates the variance of a discrete value array
+- **Expected value**: `VarianceN()` - calculates variance for a uniform distribution
+- **Format float pointer**: `FmtFloatPtr()` - formats a pointer to a number as a string with one decimal place
+- **Equal for float pointers**: `NearEqualFloatPtr()` - approximate equality check for pointers to float values
+
+## Quick Start
+
+### Example: Calculate Mean and Variance
+
+```go
 package main
 
 import (
 	"fmt"
 
-	"github.com/thorstenrie/lpstats"
+	"github.com/thorsphere/lpstats"
 )
 
 func main() {
-	var (
-		i []int     = []int{1, 2, 3, 4, 5, 6}
-		x []float64 = []float64{1.1, 2.1, 3.1, 4.1, 5.1, 6.1}
-		n uint      = 6
-	)
+	// Work with different numeric types
+	intSlice := []int{1, 2, 3, 4, 5, 6}
+	floatSlice := []float64{1.1, 2.1, 3.1, 4.1, 5.1, 6.1}
+	dieSize := uint(6)
 
-	im, _ := lpstats.ArithmeticMean(i)
-	xm, _ := lpstats.ArithmeticMean(x)
+	// Calculate arithmetic mean
+	intMean, _ := lpstats.ArithmeticMean(intSlice)
+	floatMean, _ := lpstats.ArithmeticMean(floatSlice)
 
-	iv, _ := lpstats.Variance(i)
-	xv, _ := lpstats.Variance(x)
+	// Calculate variance
+	intVariance, _ := lpstats.Variance(intSlice)
+	floatVariance, _ := lpstats.Variance(floatSlice)
 
-	fmt.Printf("Mean(i) = %f, Variance(i) = %f\n", im, iv)
-	fmt.Printf("Mean(f) = %f, Variance(x) = %f\n", xm, xv)
+	fmt.Printf("Integer slice - Mean: %.2f, Variance: %.2f\n", intMean, intVariance)
+	fmt.Printf("Float slice - Mean: %.2f, Variance: %.2f\n", floatMean, floatVariance)
 
-	fmt.Printf("Variance of a %d-sided die: %.2f\n", n, lpstats.VarianceN(n))
+	// Variance for uniform distribution (e.g., dice)
+	diceVariance := lpstats.VarianceN(dieSize)
+	fmt.Printf("Variance of a %d-sided die: %.4f\n", dieSize, diceVariance)
 }
 ```
 
 ## Known Limitations
 
-- Most calculations are based on floating point arithmetic. It is not suitable for arbitrary precision fixed-point decimal arithmetic.
+- Calculations use floating-point arithmetic and are not suitable for arbitrary precision fixed-point decimal arithmetic
+- For very large datasets, consider memory and performance implications
 
-## Links
+## Contributing
 
-[Godoc](https://pkg.go.dev/github.com/thorstenrie/lpstats)
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-[Go Report Card](https://goreportcard.com/report/github.com/thorstenrie/lpstats)
+## Security
 
-[Open Source Insights](https://deps.dev/go/github.com%2Fthorstenrie%2Flpstats)
+For security issues, please see [SECURITY.md](SECURITY.md).
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0. See [LICENSE](LICENSE) for details.
+
+## Resources
+
+- [API Documentation (pkg.go.dev)](https://pkg.go.dev/github.com/thorsphere/lpstats)
+- [Go Report Card](https://goreportcard.com/report/github.com/thorsphere/lpstats)
+- [Code Quality Analysis](https://www.codefactor.io/repository/github/thorsphere/lpstats)
+- [Dependency Analysis (Open Source Insights)](https://deps.dev/go/github.com%2Fthorsphere%2Flpstats)
