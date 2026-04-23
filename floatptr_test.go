@@ -42,8 +42,8 @@ func TestFmtFloatPtrNil(t *testing.T) {
 	}
 }
 
-// TestFloatPtrEqual tests the returned value of FloatPtrEqual for two non-nil pointers to equal float64 values.
-// It fails if FloatPtrEqual does not return true for two non-nil pointers to equal values.
+// TestFloatPtrEqual tests the returned value of NearEqualFloatPtr for two non-nil pointers to equal float64 values.
+// It fails if NearEqualFloatPtr does not return true for two non-nil pointers to equal values.
 func TestFloatPtrEqual(t *testing.T) {
 	// Test with two non-nil pointers to equal values
 	f1 := 3.14
@@ -52,24 +52,24 @@ func TestFloatPtrEqual(t *testing.T) {
 	ptr2 := &f2
 	// The expected result is true since both pointers point to equal values
 	w := true
-	// Call testfb with the pointers, expected value, and FloatPtrEqual function to test for equality
-	testfb(t, ptr1, ptr2, w, lpstats.FloatPtrEqual)
+	// Call testfb with the pointers, expected value, and NearEqualFloatPtr function to test for equality
+	testfb(t, ptr1, ptr2, w, lpstats.NearEqualFloatPtr)
 }
 
-// TestFloatPtrEqualNil tests the returned value of FloatPtrEqual for two nil pointers.
-// It fails if FloatPtrEqual does not return true for two nil pointers.
+// TestFloatPtrEqualNil tests the returned value of NearEqualFloatPtr for two nil pointers.
+// It fails if NearEqualFloatPtr does not return true for two nil pointers.
 func TestFloatPtrEqualNil1(t *testing.T) {
 	// Test with two nil pointers
 	var ptr1 *float64 = nil
 	var ptr2 *float64 = nil
 	// The expected result is true since both pointers are nil
 	w := true
-	// Call testfb with the pointers, expected value, and FloatPtrEqual function to test for equality
-	testfb(t, ptr1, ptr2, w, lpstats.FloatPtrEqual)
+	// Call testfb with the pointers, expected value, and NearEqualFloatPtr function to test for equality
+	testfb(t, ptr1, ptr2, w, lpstats.NearEqualFloatPtr)
 }
 
-// TestFloatPtrEqualNil tests the returned value of FloatPtrEqual for one nil pointer and one non-nil pointer.
-// It fails if FloatPtrEqual does not return false for one nil pointer and one non-nil pointer.
+// TestFloatPtrEqualNil tests the returned value of NearEqualFloatPtr for one nil pointer and one non-nil pointer.
+// It fails if NearEqualFloatPtr does not return false for one nil pointer and one non-nil pointer.
 func TestFloatPtrEqualNil2(t *testing.T) {
 	// Test with one nil pointer and one non-nil pointer
 	f1 := 3.14
@@ -77,14 +77,14 @@ func TestFloatPtrEqualNil2(t *testing.T) {
 	var ptr2 *float64 = nil
 	// The expected result is false since the pointers point to different values
 	w := false
-	// Call testfb with the pointers, expected value, and FloatPtrEqual function to test for equality
-	testfb(t, ptr1, ptr2, w, lpstats.FloatPtrEqual)
-	// Call testfb with the pointers, expected value, and FloatPtrEqual function to test for equality in the other order
-	testfb(t, ptr2, ptr1, w, lpstats.FloatPtrEqual)
+	// Call testfb with the pointers, expected value, and NearEqualFloatPtr function to test for equality
+	testfb(t, ptr1, ptr2, w, lpstats.NearEqualFloatPtr)
+	// Call testfb with the pointers, expected value, and NearEqualFloatPtr function to test for equality in the other order
+	testfb(t, ptr2, ptr1, w, lpstats.NearEqualFloatPtr)
 }
 
-// TestFloatPtrNotEqual tests the returned value of FloatPtrEqual for two non-nil pointers to unequal values.
-// It fails if FloatPtrEqual does not return false for two non-nil pointers to unequal values.
+// TestFloatPtrNotEqual tests the returned value of NearEqualFloatPtr for two non-nil pointers to unequal values.
+// It fails if NearEqualFloatPtr does not return false for two non-nil pointers to unequal values.
 func TestFloatPtrNotEqual(t *testing.T) {
 	// Test with two non-nil pointers to unequal values
 	f1 := 3.14
@@ -93,6 +93,6 @@ func TestFloatPtrNotEqual(t *testing.T) {
 	ptr2 := &f2
 	// The expected result is false since the pointers point to unequal values
 	w := false
-	// Call testfb with the pointers, expected value, and FloatPtrEqual function to test for inequality
-	testfb(t, ptr1, ptr2, w, lpstats.FloatPtrEqual)
+	// Call testfb with the pointers, expected value, and NearEqualFloatPtr function to test for inequality
+	testfb(t, ptr1, ptr2, w, lpstats.NearEqualFloatPtr)
 }

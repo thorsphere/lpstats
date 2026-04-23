@@ -4,7 +4,9 @@
 package lpstats
 
 // Import the fmt package for formatting strings
-import "fmt"
+import (
+	"fmt"
+)
 
 // FmtFloatPtr formats a pointer to a number as a string with one decimal place.
 // It returns "nil" if the pointer is nil.
@@ -17,9 +19,10 @@ func FmtFloatPtr[T Floating](a *T) string {
 	return fmt.Sprintf("%.1f", *a)
 }
 
-// FloatPtrEqual compares two pointers to numbers for equality.
-// It returns true if both pointers are nil or if they point to equal values, and false otherwise.
-func FloatPtrEqual[T Floating](a, b *T) bool {
+// NearEqualFloatPtr returns whether two pointers to numbers are equal within a specified maximum absolute difference maxDiff.
+// It returns true if both pointers are nil, or if both pointers are non-nil and the absolute difference of the values they point to is less than or equal to maxDiff.
+// It returns false if one pointer is nil and the other is not, or if both pointers are non-nil and the absolute difference of the values they point to is greater than maxDiff.
+func NearEqualFloatPtr[T Floating](a, b *T, maxDiff T) bool {
 	// If both pointers are nil, they are considered equal
 	if a == nil && b == nil {
 		return true
@@ -28,6 +31,6 @@ func FloatPtrEqual[T Floating](a, b *T) bool {
 	if a == nil || b == nil {
 		return false
 	}
-	// If both pointers are not nil, compare the values they point to
-	return *a == *b
+	// If both pointers are non-nil, compare the values they point to using NearEqual with the specified maxDiff
+	return NearEqual(*a, *b, maxDiff)
 }
