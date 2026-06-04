@@ -30,7 +30,7 @@ func testi[T lpstats.Number](t *testing.T, a T, w int64, f func(T) int64) {
 	r := f(a)
 	// If the result r does not equal the wanted result w, the test fails
 	if r != w {
-		t.Error(tserr.Equal(&tserr.EqualArgs{Var: "function of a", Actual: r, Want: w}))
+		t.Error(tserr.EqualInt(&tserr.EqualIntArgs{Var: "function of a", Actual: r, Want: w}))
 	}
 }
 

@@ -31,14 +31,14 @@ func EqualS[T Sinteger](x, y []T) error {
 	}
 	// Return an error, if the length of x and y are not equal
 	if len(x) != len(y) {
-		return tserr.Equal(&tserr.EqualArgs{Var: "Length of y", Actual: int64(len(y)), Want: int64(len(x))})
+		return tserr.EqualInt(&tserr.EqualIntArgs{Var: "Length of y", Actual: int64(len(y)), Want: int64(len(x))})
 	}
 	// Iterate over range of x
 	for i, v := range x {
 		// Compare v = x[i] with y[i]
 		if v != y[i] {
 			// Return an error, if v = x[i] and y[i] are not equal
-			return tserr.Equal(&tserr.EqualArgs{Var: fmt.Sprintf("y[%d]", i), Actual: int64(y[i]), Want: int64(v)})
+			return tserr.EqualInt(&tserr.EqualIntArgs{Var: fmt.Sprintf("y[%d]", i), Actual: int64(y[i]), Want: int64(v)})
 		}
 	}
 	return nil

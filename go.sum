@@ -1,2 +1,4 @@
 github.com/thorsphere/tserr v1.17.2 h1:Oryl3hXoNeKJcuOOIvlIbUElTCQlcMwccZodqql7PYI=
 github.com/thorsphere/tserr v1.17.2/go.mod h1:RFYzM4J/cQaehAUFKf9yvVOkcGtl7CcymyS3qiOfgBA=
+github.com/thorsphere/tserr v1.20.0 h1:msY56Tgn2HT79Gc3Uppz6/nATuTLfK7NXWj68qCUTuY=
+github.com/thorsphere/tserr v1.20.0/go.mod h1:779lF6yFY5MXuJFpRqdBoTYLJTrxXx8yiwEDAsRN1sI=
