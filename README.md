@@ -72,8 +72,12 @@ Most functions use Go generics with type constraints defined in [constraints.go]
 - **Mean**: `Mean()` - calculates the mean of a discrete value array
 - **Variance**: `Variance()` - calculates the variance of a discrete value array
 - **Expected value**: `VarianceN()` - calculates variance for a uniform distribution
-- **Format float pointer**: `FmtFloatPtr()` - formats a pointer to a number as a string with one decimal place
+- **Format float pointer**: `FmtFloatPtr()` - formats a pointer to a number as a string with a specified number of decimal places (clamped); returns "nil" for nil pointers
 - **Equal for float pointers**: `NearEqualFloatPtr()` - approximate equality check for pointers to float values
+- **Pointer to number**: `PtrFloat()` - returns a pointer to a number
+- **Copy number pointer**: `CopyFloatPtr()` - returns a copy of a pointer to a number; nil safe
+- **Pointer to string**: `PtrStr()` - returns a pointer to a string
+- **Copy string pointer**: `CopyStrPtr()` - returns a copy of a pointer to a string; nil safe
 
 ## Quick Start
 

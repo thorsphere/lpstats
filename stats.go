@@ -21,8 +21,12 @@
 //   - Equal: Equality check for slices of signed integers
 //   - NearEqual: Near equality for float types
 //   - ExpectedValue: Expected value for a uniform distribution
-//   - FmtFloatPtr: Format a pointer to a floating-point number as a string
+//   - FmtFloatPtr: Format a pointer to a number as a string with a specified precision (clamped)
 //   - NearEqualFloatPtr: Near equality check for pointers to float types
+//   - PtrFloat: Returns a pointer to a number
+//   - CopyFloatPtr: Returns a copy of a pointer to a number (nil if nil)
+//   - PtrStr: Returns a pointer to a string
+//   - CopyStrPtr: Returns a copy of a pointer to a string (nil if nil)
 //
 // Most functions support both integer and floating-point numeric types.
 //

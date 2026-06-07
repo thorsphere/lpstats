@@ -8,15 +8,26 @@ import (
 	"fmt"
 )
 
-// FmtFloatPtr formats a pointer to a number as a string with one decimal place.
+const (
+	// MaxPrecision is the maximum number of decimal places for formatting.
+	maxPrecision = 10
+)
+
+// FmtFloatPtr formats a pointer to a number as a string with the specified precision.
 // It returns "nil" if the pointer is nil.
 func FmtFloatPtr[T Floating](a *T, prec int) string {
 	// Return "nil" if a is nil
 	if a == nil {
 		return "nil"
 	}
-	// Format the value pointed to by a with one decimal place and return it as a string
-	return fmt.Sprintf("%.*f", prec,*a)
+	// Set the precision to 0 if it is less than 0
+	if prec < 0 {
+		prec = 0
+	} else if prec > maxPrecision { // Set the precision to MaxPrecision if it is greater than MaxPrecision
+		prec = maxPrecision
+	}
+	// Format the value pointed to by a with the given precision and return it as a string
+	return fmt.Sprintf("%.*f", prec, *a)
 }
 
 // NearEqualFloatPtr returns whether two pointers to numbers are equal within a specified maximum absolute difference maxDiff.
