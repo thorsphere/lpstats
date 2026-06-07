@@ -20,3 +20,20 @@ func CopyStrPtr(p *string) *string {
 	// Return a pointer to the new value
 	return &v
 }
+
+// EqualStrPtr returns whether two pointers to strings are equal.
+// It returns true if both pointers are nil, or if both pointers are non-nil and the values they point to are equal.
+// It returns false if one pointer is nil and the other is not, or if both pointers are non-nil and the values
+// they point to are not equal.
+func EqualStrPtr(a, b *string) bool {
+	// If both pointers are nil, they are considered equal
+	if a == nil && b == nil {
+		return true
+	}
+	// If one pointer is nil and the other is not, they are not equal
+	if a == nil || b == nil {
+		return false
+	}
+	// If both pointers are non-nil, compare the values they point to
+	return *a == *b
+}

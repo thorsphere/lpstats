@@ -27,6 +27,7 @@
 //   - CopyFloatPtr: Returns a copy of a pointer to a number (nil if nil)
 //   - PtrStr: Returns a pointer to a string
 //   - CopyStrPtr: Returns a copy of a pointer to a string (nil if nil)
+//   - EqualStrPtr: Equality check for pointers to strings (nil-safe)
 //
 // Most functions support both integer and floating-point numeric types.
 //

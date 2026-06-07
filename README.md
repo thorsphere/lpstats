@@ -78,6 +78,7 @@ Most functions use Go generics with type constraints defined in [constraints.go]
 - **Copy number pointer**: `CopyFloatPtr()` - returns a copy of a pointer to a number; nil safe
 - **Pointer to string**: `PtrStr()` - returns a pointer to a string
 - **Copy string pointer**: `CopyStrPtr()` - returns a copy of a pointer to a string; nil safe
+- **Equal for string pointers**: `EqualStrPtr()` - nil-safe equality check for pointers to strings
 
 ## Quick Start
 
