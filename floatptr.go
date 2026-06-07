@@ -10,13 +10,13 @@ import (
 
 // FmtFloatPtr formats a pointer to a number as a string with one decimal place.
 // It returns "nil" if the pointer is nil.
-func FmtFloatPtr[T Floating](a *T) string {
+func FmtFloatPtr[T Floating](a *T, prec int) string {
 	// Return "nil" if a is nil
 	if a == nil {
 		return "nil"
 	}
 	// Format the value pointed to by a with one decimal place and return it as a string
-	return fmt.Sprintf("%.1f", *a)
+	return fmt.Sprintf("%.*f", prec,*a)
 }
 
 // NearEqualFloatPtr returns whether two pointers to numbers are equal within a specified maximum absolute difference maxDiff.
@@ -33,4 +33,22 @@ func NearEqualFloatPtr[T Floating](a, b *T, maxDiff T) bool {
 	}
 	// If both pointers are non-nil, compare the values they point to using NearEqual with the specified maxDiff
 	return NearEqual(*a, *b, maxDiff)
+}
+
+// PtrFloat returns a pointer to a number.
+func PtrFloat[T Floating](a T) *T {
+	return &a
+}
+
+// CopyFloatPtr returns a copy of a pointer to a number.
+// It returns nil if p is nil.
+func CopyFloatPtr[T Floating](p *T) *T {
+	// Return nil if p is nil
+	if p == nil {
+		return nil
+	}
+	// Create a new value of type T and copy the value pointed to by p into it
+	v := *p
+	// Return a pointer to the new value
+	return &v
 }

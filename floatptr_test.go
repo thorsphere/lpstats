@@ -15,12 +15,11 @@ import (
 // It fails if FmtFloatPtr does not return the wanted value.
 func TestFmtFloatPtr(t *testing.T) {
 	// Test with a non-nil pointer
-	f := 3.14
-	ptr := &f
+	ptr := lpstats.PtrFloat(3.14)
 	// The expected result is "3.1" since FmtFloatPtr formats the float with one decimal place
 	w := "3.1"
 	// Call FmtFloatPtr with the pointer and store the result
-	result := lpstats.FmtFloatPtr(ptr)
+	result := lpstats.FmtFloatPtr(ptr, 1)
 	// If the result does not equal the expected value, the test fails
 	if result != w {
 		t.Error(tserr.EqualStr(&tserr.EqualStrArgs{Var: "FmtFloatPtr", Actual: result, Want: w}))
@@ -35,7 +34,7 @@ func TestFmtFloatPtrNil(t *testing.T) {
 	// The expected result is "nil" since FmtFloatPtr returns "nil" for nil pointers
 	w := "nil"
 	// Call FmtFloatPtr with the pointer and store the result
-	result := lpstats.FmtFloatPtr(ptr)
+	result := lpstats.FmtFloatPtr(ptr,1)
 	// If the result does not equal the expected value, the test fails
 	if result != w {
 		t.Error(tserr.EqualStr(&tserr.EqualStrArgs{Var: "FmtFloatPtr", Actual: result, Want: w}))
@@ -46,10 +45,8 @@ func TestFmtFloatPtrNil(t *testing.T) {
 // It fails if NearEqualFloatPtr does not return true for two non-nil pointers to equal values.
 func TestFloatPtrEqual(t *testing.T) {
 	// Test with two non-nil pointers to equal values
-	f1 := 3.14
-	f2 := 3.14
-	ptr1 := &f1
-	ptr2 := &f2
+	ptr1 := lpstats.PtrFloat(3.14)
+	ptr2 := lpstats.PtrFloat(3.14)
 	// The expected result is true since both pointers point to equal values
 	w := true
 	// Call testfb with the pointers, expected value, and NearEqualFloatPtr function to test for equality
@@ -72,8 +69,7 @@ func TestFloatPtrEqualNil1(t *testing.T) {
 // It fails if NearEqualFloatPtr does not return false for one nil pointer and one non-nil pointer.
 func TestFloatPtrEqualNil2(t *testing.T) {
 	// Test with one nil pointer and one non-nil pointer
-	f1 := 3.14
-	ptr1 := &f1
+	ptr1 := lpstats.PtrFloat(3.14)
 	var ptr2 *float64 = nil
 	// The expected result is false since the pointers point to different values
 	w := false
@@ -87,12 +83,38 @@ func TestFloatPtrEqualNil2(t *testing.T) {
 // It fails if NearEqualFloatPtr does not return false for two non-nil pointers to unequal values.
 func TestFloatPtrNotEqual(t *testing.T) {
 	// Test with two non-nil pointers to unequal values
-	f1 := 3.14
-	f2 := 2.71
-	ptr1 := &f1
-	ptr2 := &f2
+	ptr1 := lpstats.PtrFloat(3.14)
+	ptr2 := lpstats.PtrFloat(2.71)
 	// The expected result is false since the pointers point to unequal values
 	w := false
 	// Call testfb with the pointers, expected value, and NearEqualFloatPtr function to test for inequality
 	testfb(t, ptr1, ptr2, w, lpstats.NearEqualFloatPtr)
+}
+
+// TestCopyFloatPtr tests the returned value of CopyFloatPtr for a non-nil pointer to a float64.
+func TestCopyFloatPtr(t *testing.T) {
+	// Test with a non-nil pointer
+	ptr := lpstats.PtrFloat(3.14)
+	// Call CopyFloatPtr with the pointer and store the result
+	result := lpstats.CopyFloatPtr(ptr)
+	// If the result does not equal the expected value, the test fails
+	if *result != *ptr {
+		t.Error(tserr.Equalf(&tserr.EqualfArgs{Var: "CopyFloatPtr", Actual: *result, Want: *ptr}))
+	}
+	// If the result is not a deep copy of the pointer, the test fails
+	if result == ptr {
+		t.Error(tserr.NotEqual(&tserr.NotEqualArgs{X: "Pointer to a float64", Y: "Deep copy of the pointer to a float64"}))
+	}
+}
+
+// TestCopyFloatPtrNil tests the returned value of CopyFloatPtr for a nil pointer.
+func TestCopyFloatPtrNil(t *testing.T) {
+	// Test with a nil pointer
+	var ptr *float64 = nil
+	// Call CopyFloatPtr with the pointer and store the result
+	result := lpstats.CopyFloatPtr(ptr)
+	// If the result does not equal the expected value, the test fails
+	if result != nil {
+		t.Error(tserr.NilExpected("CopyFloatPtr"))
+	}
 }
