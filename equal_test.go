@@ -86,3 +86,74 @@ func TestES(t *testing.T) {
 		t.Error(tserr.Op(&tserr.OpArgs{Op: "EqualS", Fn: "y1 and y2", Err: e}))
 	}
 }
+
+// TestESMbothNil tests EqualStrMaps for two nil maps of strings.
+// The test fails, if EqualStrMaps returns false.
+func TestESMbothNil(t *testing.T) {
+    // Declare string maps a and b as nil
+    var a, b map[string]string = nil, nil
+    // The test fails, if EqualStrMaps returns false
+    if !lpstats.EqualStrMaps(a, b) {
+        t.Error(tserr.Return(&tserr.ReturnArgs{Op: "EqualStrMaps", Actual: "false", Want: "true"}))
+    }
+}
+
+// TestESMlength tests EqualStrMaps for two maps of strings with different length.
+// The test fails, if EqualStrMaps returns true.
+func TestESMlength(t *testing.T) {
+    // Allocate and initialize string maps a and b with different number of entries
+    a, b := map[string]string{"k1": "v1"}, map[string]string{"k1": "v1", "k2": "v2"}
+    // The test fails, if EqualStrMaps returns true
+    if lpstats.EqualStrMaps(a, b) {
+        t.Error(tserr.Return(&tserr.ReturnArgs{Op: "EqualStrMaps", Actual: "true", Want: "false"}))
+    }
+}
+
+// TestESMvalue tests EqualStrMaps for two maps of strings with same keys but different values.
+// The test fails, if EqualStrMaps returns true.
+func TestESMvalue(t *testing.T) {
+    // Allocate and initialize string maps a and b with the same keys but different values
+    a, b := map[string]string{"k1": "v1", "k2": "v2"}, map[string]string{"k1": "v1", "k2": "v3"}
+    // The test fails, if EqualStrMaps returns true
+    if lpstats.EqualStrMaps(a, b) {
+        t.Error(tserr.Return(&tserr.ReturnArgs{Op: "EqualStrMaps", Actual: "true", Want: "false"}))
+    }
+}
+
+// TestESMkey tests EqualStrMaps for two maps of strings with the same length but different keys.
+// The test fails, if EqualStrMaps returns true.
+func TestESMkey(t *testing.T) {
+    // Allocate and initialize string maps a and b with the same length but different keys
+    a, b := map[string]string{"k1": "v1"}, map[string]string{"k2": "v1"}
+    // The test fails, if EqualStrMaps returns true
+    if lpstats.EqualStrMaps(a, b) {
+        t.Error(tserr.Return(&tserr.ReturnArgs{Op: "EqualStrMaps", Actual: "true", Want: "false"}))
+    }
+}
+
+// TestESManil tests EqualStrMaps for a nil map and a non-nil map of strings.
+// The test fails, if EqualStrMaps returns true.
+func TestESManil(t *testing.T) {
+    // Declare string map a as nil and allocate string map b with a single entry
+    var a map[string]string = nil
+    b := map[string]string{"k1": "v1"}
+    // The test fails, if EqualStrMaps returns true
+    if lpstats.EqualStrMaps(a, b) {
+        t.Error(tserr.Return(&tserr.ReturnArgs{Op: "EqualStrMaps", Actual: "true", Want: "false"}))
+    }
+    // The test fails, if EqualStrMaps returns true
+    if lpstats.EqualStrMaps(b, a) {
+        t.Error(tserr.Return(&tserr.ReturnArgs{Op: "EqualStrMaps", Actual: "true", Want: "false"}))
+    }
+}
+
+// TestESM tests EqualStrMaps for two maps of strings with the same length and the same key-value pairs.
+// The test fails, if EqualStrMaps returns false.
+func TestESM(t *testing.T) {
+    // Allocate and initialize string maps a and b with the same length and the same key-value pairs
+    a, b := map[string]string{"k1": "v1", "k2": "v2"}, map[string]string{"k1": "v1", "k2": "v2"}
+    // The test fails, if EqualStrMaps returns false
+    if !lpstats.EqualStrMaps(a, b) {
+        t.Error(tserr.Return(&tserr.ReturnArgs{Op: "EqualStrMaps", Actual: "false", Want: "true"}))
+    }
+}

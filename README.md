@@ -79,6 +79,7 @@ Most functions use Go generics with type constraints defined in [constraints.go]
 - **Near equal**: `NearEqual()` - approximate equality for floating-point types
 - **Equal for float pointers**: `NearEqualFloatPtr()` - approximate equality check for pointers to float values
 - **Equal for string pointers**: `EqualStrPtr()` - nil-safe equality check for pointers to strings
+- **Equal for string maps**: `EqualStrMaps()` - nil-safe equality check for maps of strings
 
 ### Pointer & String Utilities
 

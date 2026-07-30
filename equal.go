@@ -43,3 +43,27 @@ func EqualS[T Sinteger](x, y []T) error {
 	}
 	return nil
 }
+
+// EqualStrMaps returns an error if maps a and b are not equal in length and in their values.
+// If maps a and b are equal in length and all of their values, EqualStrMaps returns true.
+// If a and b are nil, EqualStrMaps returns true.
+func EqualStrMaps(a, b map[string]string) bool {
+	// Check if a and b are nil
+	if a == nil && b == nil {
+		return true
+	}
+	// Check if a and b have the same length
+	if len(a) != len(b) {
+		// If they have different lengths, they are not equal
+		return false
+	}
+	// Iterate over range of a
+	for k, v := range a {
+		// Check if key k is in b and if value v is equal to b[k]
+		if bv, ok := b[k]; !ok || bv != v {
+			return false
+		}
+	}
+	// If we get here, all keys in a are in b and all values in b are in a
+	return true
+}

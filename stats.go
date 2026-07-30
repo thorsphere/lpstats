@@ -22,6 +22,7 @@
 //   - NearEqual: Near equality for floating-point types
 //   - NearEqualFloatPtr: Near equality check for pointers to floating-point values
 //   - EqualStrPtr: Nil-safe equality check for pointers to strings
+//   - EqualStrMaps: Nil-safe equality check for maps of strings
 //
 // Pointer & String Utilities:
 //   - FmtFloatPtr: Format a pointer to a number as a string with a specified precision (clamped)
