@@ -39,13 +39,13 @@ import "github.com/thorsphere/lpstats"
 Most functions use Go generics with type constraints defined in [constraints.go](constraints.go). The main constraints are:
 
 - **`Number`**: All number types (int, uint, float, etc.)  
-  Example: `func Square[T Number](x T) float64`
+  Example: `func Abs[T Number](a T) T`
 
 - **`Signed`**: Signed number types (int, float)  
   Example: `func Sign[T Signed](a T) T`
 
-- **`Integer`**: Signed and unsigned integer types  
-  Example: `func Abs[T Number](a T) T`
+- **`Integer`**: Signed and unsigned integer types; used as a building block for `Number`  
+  Example: `func VarianceN[T Uinteger](n T) float64` uses `Uinteger`, a subset
 
 - **`Sinteger`**: Signed integer types (int, int8, int16, etc.)  
   Example: `func EqualS[T Sinteger](x, y []T) error`
@@ -62,7 +62,7 @@ Most functions use Go generics with type constraints defined in [constraints.go]
 
 - **Absolute value**: `Abs()` - returns the absolute value of a number
 - **Sign**: `Sign()` - returns the sign of a number
-- **Square**: `Square()` - returns the square of a number
+- **Square**: `Square()` - returns the square of a number as `float64`
 - **Sum**: `Sum()` - calculates the sum of values
 
 ### Statistics
@@ -76,7 +76,7 @@ Most functions use Go generics with type constraints defined in [constraints.go]
 ### Comparison
 
 - **Equal for slices**: `EqualS()` - equality check for slices of signed integers
-- **Near equal**: `NearEqual()` - approximate equality for floating-point types
+- **Near equal**: `NearEqual()` - near equality for floating-point types
 - **Equal for float pointers**: `NearEqualFloatPtr()` - approximate equality check for pointers to float values
 - **Equal for string pointers**: `EqualStrPtr()` - nil-safe equality check for pointers to strings
 - **Equal for string maps**: `EqualStrMaps()` - nil-safe equality check for maps of strings
@@ -88,6 +88,7 @@ Most functions use Go generics with type constraints defined in [constraints.go]
 - **Format float pointer**: `FmtFloatPtr()` - formats a pointer to a number as a string with a specified number of decimal places (clamped); returns `"nil"` for nil pointers
 - **Pointer to string**: `PtrStr()` - returns a pointer to a string
 - **Copy string pointer**: `CopyStrPtr()` - returns a copy of a pointer to a string; nil safe
+- **Count format arguments**: `CountArgs()` - returns the number of arguments a format string requires for fmt functions (e.g. `Sprintf`); returns an error for malformed format strings
 
 > **Note:** Functions like `ArithmeticMean()`, `Sum()`, and `Variance()` return an error when the input slice is empty.
 

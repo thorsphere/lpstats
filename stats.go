@@ -30,6 +30,7 @@
 //   - CopyFloatPtr: Returns a copy of a pointer to a number (nil if nil)
 //   - PtrStr: Returns a pointer to a string
 //   - CopyStrPtr: Returns a copy of a pointer to a string (nil if nil)
+//   - CountArgs: Number of arguments required by a format string (returns error if malformed)
 //
 // Copyright (c) 2023-2026 thorsphere.
 // All Rights Reserved. Use is governed by the Functional Source License v1.1
