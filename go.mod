@@ -1,5 +1,5 @@
 module github.com/thorsphere/lpstats
 
-go 1.26
+go 1.27
 
-require github.com/thorsphere/tserr v1.21.0
+require github.com/thorsphere/tserr v1.21.6
